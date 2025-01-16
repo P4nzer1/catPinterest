@@ -1,9 +1,10 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-import CatsCard from "../../entities/Cats/ui/CatsCard/CatsCard";
 import { RootState } from "../../app/config/store";
-import { fetchCatsStart } from "../../entities/Cats/model/catsSlice";
+import { fetchCatsStart, fetchCatsSuccess, fetchCatsFailure } from "../../entities/Cats/model/catsSlice";
+import CatsCard from "../../entities/Cats/ui/CatsCard/CatsCard";
+import styles from "./HomePage.module.scss";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -16,18 +17,30 @@ const HomePage = () => {
     dispatch(fetchCatsStart());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Загрузка...</div>;
-  }
+  const toggleFavorite = (catId: string) => {
+    const isFavorite = cats.some((favoriteCat) => favoriteCat.id === catId);
+    if (isFavorite) {
+      dispatch(fetchCatsFailure(catId)); 
+    } else {
+      const cat = cats.find((c) => c.id === catId);
+      if (cat) {
+        dispatch(fetchCatsSuccess([cat]));
+      }
+    }
+  };
 
-  if (error) {
-    return <div>Ошибка: {error}</div>;
-  }
+  if (loading) return <div>Загрузка...</div>;
+  if (error) return <div>Ошибка: {error}</div>;
 
   return (
-    <div>
+    <div className={styles.homePage}>
       {cats.map((cat) => (
-        <CatsCard key={cat.id} cat={cat} />
+        <CatsCard
+          key={cat.id}
+          cat={cat}
+          isFavorite={cats.some((favoriteCat) => favoriteCat.id === cat.id)}
+          onToggleFavorite={() => toggleFavorite(cat.id)}
+        />
       ))}
     </div>
   );

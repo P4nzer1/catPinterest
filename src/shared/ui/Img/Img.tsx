@@ -21,11 +21,17 @@ const Img = (props: ImgProps) => {
     className,
     border,
   ];
+  const customStyles = {
+    width: `${width}px`,
+    height: `${height}px`,
+    border,
+  };
 
   return (
     <img
       src={src}
       alt={alt}
+      style={customStyles}
       className={classNames(styles.image, additionalClasses)}
       {...rest}
     />
