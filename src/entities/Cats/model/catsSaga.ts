@@ -8,7 +8,7 @@ import {
   fetchCatsFailure,
   saveRemainingCats,
 } from "./catsSlice";
-import { RootState } from "../../../app/config/store";
+import { RootState } from "@/app/config/store";
 
 function* onFetchCats() {
   try {

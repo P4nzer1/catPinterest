@@ -1,8 +1,8 @@
 import classNames from "classnames";
 
-import BlockHeart from "../../svg/BlockHeart";
-import HoverHeart from "../../svg/HoverHeart";
-import ActiveHeart from "../../svg/ActiveHeart";
+import BlockHeart from "@/shared/svg/BlockHeart";
+import HoverHeart from "@/shared/svg/HoverHeart";
+import ActiveHeart from "@/shared/svg/ActiveHeart";
 import styles from "./Button.module.scss";
 import { ButtonProps } from "./types";
 import { WidthSize } from "./constants";

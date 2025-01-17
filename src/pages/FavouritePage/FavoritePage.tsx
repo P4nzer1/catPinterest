@@ -1,7 +1,7 @@
-import CatsCard from "../../entities/Cats/ui/CatsCard/CatsCard";
+import CatsCard from "@/entities/Cats/ui/CatsCard/CatsCard";
+import { useFavorites } from "@/entities/Cats/lib/hooks/useFavorites";
+import Text from "@/shared/ui/Text/Text";
 import styles from "./FavoritePage.module.scss";
-import { useFavorites } from "../../entities/Cats/lib/hooks/useFavorites";
-import Text from "../../shared/ui/Text/Text";
 
 const FavoritesPage = () => {
   const { favorites, handleToggleFavorite } = useFavorites();

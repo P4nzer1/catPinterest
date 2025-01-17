@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { Cats } from "../../lib/types";
-import Img from "../../../../shared/ui/Img/Img";
-import Button from "../../../../shared/ui/Button/Button";
+import Img from "@/shared/ui/Img/Img";
+import Button from "@/shared/ui/Button/Button";
 import styles from "./CatsCard.module.scss";
 
 interface CatsCardProps {

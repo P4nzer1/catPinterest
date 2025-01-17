@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { BASE_URL } from "../../../shared/api/constants";
+import { BASE_URL } from "@/shared/api/constants";
 import { DEFAULT_PARAMS } from "../lib/constants";
 import { GetCatsParams, Cats} from "../lib/types";
 

@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "../../../../app/config/store";
+import { RootState } from "@/app/config/store";
 import {
   fetchCatsStart,
   fetchCatsSuccess,
   saveRemainingCats,
 } from "../../model/catsSlice";
-import Link from "../../../../shared/ui/Link/Link";
-import Text from "../../../../shared/ui/Text/Text";
+import Link from "@/shared/ui/Link/Link";
+import Text from "@/shared/ui/Text/Text";
 import styles from "./CatsLoadMore.module.scss";
 
 const CatsLoadMore = () => {

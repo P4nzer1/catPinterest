@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../model/catsSlice";
-import { RootState } from "../../../../app/config/store";
+import { RootState } from "@/app/config/store";
 import { Cats } from "../types";
 
 export const useFavorites = () => {
