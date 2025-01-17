@@ -10,6 +10,7 @@ export interface Cats {
 
 export interface CatsState {
   items: Cats[];
+  remainingCats: Cats[];
   loading: boolean;
   error: string | null;
   limit: number;

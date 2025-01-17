@@ -5,6 +5,7 @@ import { RootState } from "../../app/config/store";
 import { fetchCatsStart, fetchCatsSuccess, fetchCatsFailure } from "../../entities/Cats/model/catsSlice";
 import CatsCard from "../../entities/Cats/ui/CatsCard/CatsCard";
 import styles from "./HomePage.module.scss";
+import CatsLoadMore from "../../entities/Cats/ui/CatsLoadMore/CatsLoadMore";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const HomePage = () => {
   if (error) return <div>Ошибка: {error}</div>;
 
   return (
-    <div className={styles.homePage}>
+    <div className={styles.wrapper}>
       {cats.map((cat) => (
         <CatsCard
           key={cat.id}
@@ -42,6 +43,7 @@ const HomePage = () => {
           onToggleFavorite={() => toggleFavorite(cat.id)}
         />
       ))}
+      <CatsLoadMore/>
     </div>
   );
 };

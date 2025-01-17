@@ -8,10 +8,6 @@
   color: $white;
 }
 
-.error {
-  color: $orange;
-}
-
 .center {
   text-align: center;
 }
@@ -24,15 +20,15 @@
   text-align: left;
 }
 
-.s {
-  @include font($size: 0.8);
+.sizeS {
+  @include font($size: 0.875);
 }
 
-.m {
+.sizeM {
   @include font($size: 1);
 }
 
-.l {
+.sizeL {
   @include font($size: 1.2);
 }
 
