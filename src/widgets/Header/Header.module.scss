@@ -1,5 +1,19 @@
 @import '../../shared/styles/global.scss';
 
 .wrapper {
+    display: flex;
     background: $header;
+    height: 4rem;
+}
+
+.main {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.favourite {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
