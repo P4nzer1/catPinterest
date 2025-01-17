@@ -25,6 +25,15 @@ const catsSlice = createSlice({
     incrementPage(state) {
       state.page += 1;
     },
+    toggleFavorite(state, action: PayloadAction<Cats>) {
+      const cat = action.payload;
+      const isFavorite = state.favorites.some((fav) => fav.id === cat.id);
+      if (isFavorite) {
+        state.favorites = state.favorites.filter((fav) => fav.id !== cat.id);
+      } else {
+        state.favorites.push(cat);
+      }
+    },
   },
 });
 
@@ -34,5 +43,6 @@ export const {
   fetchCatsFailure,
   saveRemainingCats,
   incrementPage,
+  toggleFavorite
 } = catsSlice.actions;
 export default catsSlice.reducer;

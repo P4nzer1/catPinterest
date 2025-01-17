@@ -2,36 +2,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import { RootState } from "../../app/config/store";
-import { fetchCatsStart, fetchCatsSuccess, fetchCatsFailure } from "../../entities/Cats/model/catsSlice";
+import { fetchCatsStart } from "../../entities/Cats/model/catsSlice";
 import CatsCard from "../../entities/Cats/ui/CatsCard/CatsCard";
 import styles from "./HomePage.module.scss";
 import CatsLoadMore from "../../entities/Cats/ui/CatsLoadMore/CatsLoadMore";
+import { useFavorites } from "../../entities/Cats/lib/hooks/useFavorites";
+import Spiner from "../../shared/ui/Spiner/Spiner";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-
   const { items: cats, loading, error } = useSelector(
     (state: RootState) => state.cats
   );
 
+  const { isFavorite, handleToggleFavorite } = useFavorites();
+
   useEffect(() => {
-    dispatch(fetchCatsStart());
-  }, [dispatch]);
-
-  const toggleFavorite = (catId: string) => {
-    const isFavorite = cats.some((favoriteCat) => favoriteCat.id === catId);
-    if (isFavorite) {
-      dispatch(fetchCatsFailure(catId)); 
-    } else {
-      const cat = cats.find((c) => c.id === catId);
-      if (cat) {
-        dispatch(fetchCatsSuccess([cat]));
-      }
+    if (!cats.length) {
+      dispatch(fetchCatsStart()); 
     }
-  };
-
-  if (loading) return <div>Загрузка...</div>;
-  if (error) return <div>Ошибка: {error}</div>;
+  }, [dispatch, cats.length]);
+  //MEMO?
+  if (loading) return <Spiner/>;
+  if (error) return <div>Ошибка:{error}</div>;
 
   return (
     <div className={styles.wrapper}>
@@ -39,11 +32,11 @@ const HomePage = () => {
         <CatsCard
           key={cat.id}
           cat={cat}
-          isFavorite={cats.some((favoriteCat) => favoriteCat.id === cat.id)}
-          onToggleFavorite={() => toggleFavorite(cat.id)}
+          isFavorite={isFavorite(cat)} 
+          onToggleFavorite={() => handleToggleFavorite(cat)} 
         />
       ))}
-      <CatsLoadMore/>
+      <CatsLoadMore />
     </div>
   );
 };

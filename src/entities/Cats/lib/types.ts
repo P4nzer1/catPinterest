@@ -15,4 +15,5 @@ export interface CatsState {
   error: string | null;
   limit: number;
   page: number;
+  favorites: Cats[]
 }

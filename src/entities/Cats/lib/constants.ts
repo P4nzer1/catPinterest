@@ -11,5 +11,6 @@ export const initialState: CatsState = {
   loading: false,
   error: null,
   limit: 15,
-  page: 1
+  page: 1,
+  favorites: []
 };

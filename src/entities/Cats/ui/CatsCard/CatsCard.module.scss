@@ -2,6 +2,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   margin: 0;   
   padding: 0;
+  &:hover .button {
+    opacity: 1; 
+    visibility: visible;
+  }
+}
+
+.button {
+  position: absolute;
+  bottom: 1.5rem; 
+  right: 1.5rem; 
+  z-index: 10; 
+  opacity: 0;
+  visibility: hidden;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }

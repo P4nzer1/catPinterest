@@ -8,7 +8,7 @@ import { ButtonProps } from "./types";
 import { WidthSize } from "./constants";
 
 const Button = (props: ButtonProps) => {
-  const { text, variant = "main", iconType, className, width='120' , ...rest } = props;
+  const { text, variant = "main", iconType, className, width = "120", isActive, ...rest } = props;
   const iconMap = {
     blockHeart: <BlockHeart />,
     hoverHeart: <HoverHeart />,
@@ -16,7 +16,14 @@ const Button = (props: ButtonProps) => {
   };
   const content =
     variant === "main" ? text : iconType ? iconMap[iconType] : null;
-  const buttonClass = classNames(styles.button, styles[variant], WidthSize[width], className);
+
+  const buttonClass = classNames(
+    styles.button,
+    styles[variant],
+    variant === "main" ? WidthSize[width] : null,
+    isActive && styles.active,
+    className
+  );
 
   return (
     <button className={buttonClass} {...rest}>

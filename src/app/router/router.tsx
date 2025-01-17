@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../../pages/LayoutPage/Layout";
 import HomePageLazy from "../../pages/HomePage/HomePage.lazy";
-import FavouritePageLazy from "../../pages/FavouritePage/FavouritePage.lazy";
+import FavoritePageLazy from "../../pages/FavouritePage/FavoritePage.lazy";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/favourite",
-        element: <FavouritePageLazy />,
+        element: <FavoritePageLazy />,
       },
     ],
   },
