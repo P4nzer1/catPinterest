@@ -4,16 +4,15 @@
     display: flex;
     background: $header;
     height: 4rem;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
 }
 
 .main {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+    margin-left:3.875rem;
 }
 
 .favourite {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+
 }
