@@ -19,11 +19,20 @@ const catsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    saveRemainingCats(state, action: PayloadAction<Cats[]>) {
+      state.remainingCats = action.payload;
+    },
     incrementPage(state) {
-        state.page += 1; 
-      },
+      state.page += 1;
+    },
   },
 });
 
-export const { fetchCatsStart, fetchCatsSuccess, fetchCatsFailure, incrementPage } = catsSlice.actions;
+export const {
+  fetchCatsStart,
+  fetchCatsSuccess,
+  fetchCatsFailure,
+  saveRemainingCats,
+  incrementPage,
+} = catsSlice.actions;
 export default catsSlice.reducer;
